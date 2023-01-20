@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Navbar, Button, Link, Text, Card, Radio, Badge } from "@nextui-org/react";
 import {BsCart2} from "react-icons/bs"
 import { StoreShop } from "./Store";
+import {Link as MyLink} from "react-router-dom"
 
 
 
@@ -15,11 +16,12 @@ export default function App() {
   
   return (
     <>
+    
       <Navbar isBordered variant={variant}>
         <Navbar.Brand>
           
           <Text b color="inherit" hideIn="xs">
-            ACME
+            Rehan-Shop
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
@@ -33,7 +35,9 @@ export default function App() {
             Login
           </Navbar.Link>
           <Navbar.Item>
+          <MyLink to= '/Cart'>
           <Badge
+          
           color="error"
           content={cart.length}
           
@@ -41,6 +45,7 @@ export default function App() {
         >
           <BsCart2 size={25} />
         </Badge>
+        </MyLink>
           </Navbar.Item>
         </Navbar.Content>
       </Navbar>
