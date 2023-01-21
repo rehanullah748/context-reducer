@@ -5,12 +5,14 @@ import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai"
 const Cart = () => {
     const {state, dispatch} = useContext(StoreShop)
     const {cart, loading} = state;
+    let TotalPrice;
+    let ShippingPrice =5;
     
   return (
     <div className='max-w-screen-lg mx-auto'>
 {loading ? <div className='flex justify-center items-center h-screen'><Loading type="spinner" size="lg" /></div>:
 <div className='w-full  mt-[70px]' >
-<table >
+<table className='w-full'>
     <thead>
         <th className="mx-[60px] p-3 uppercase text-xs font-bold font-arial text-gray-600 text-left">Image</th>
         <th className="mx-[60px] p-3 uppercase text-xs font-bold font-arial text-gray-600 text-left">Title</th>
@@ -21,6 +23,7 @@ const Cart = () => {
     </thead>
     <tbody>
     {cart.map((item)=> {
+        TotalPrice =item.price * item.quantities + ShippingPrice
 return (
  <tr>
     <td className="p-3 text-sm text-gray-600 "><img className='w-[70px] h-[70px]' src={item.image} alt="" /></td>
@@ -44,7 +47,7 @@ return (
 <hr className='border-3' />
 <div className='mt-10'>
 <div>Shipping Cost: $5</div>
-<div>Total Price: </div>
+<div><h1>Total Price : ${TotalPrice}</h1> </div>
 </div>
 </div>
 }
